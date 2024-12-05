@@ -1,10 +1,11 @@
+import debounce from "./debounce.js";
+
 export default class ScrollAnima {
- main
   constructor() {
     this.sections = document.querySelectorAll(sections);
     this.windowMetade = window.innerHeight * 0.6;
 
-    this.checkDistance = this.checkDistance.bind(this);
+    this.checkDistance = debounce(this.checkDistance.bind(this), 200);
   }
 
   //Pega a distância de cada item em relação ao topo da página
@@ -41,28 +42,5 @@ export default class ScrollAnima {
   //Remove o event de scroll
   stop() {
     window.removeEventListener("scroll", this.checkDistance);
-
-  constructor(sections) {
-    this.sections = document.querySelectorAll(sections);
-    this.windowMetade = window.innerHeight * 0.6;
-
-    this.animaScroll = this.animaScroll.bind(this);
-  }
-  
-  animaScroll() {
-    this.sections.forEach((section) => {
-      const sectionTop = section.getBoundingClientRect().top;
-      const isSectionVisible = (sectionTop - this.windowMetade) < 0;
-      if (isSectionVisible) {
-        section.classList.add('ativo');
-      } else if (section.classList.contains('ativo')) {
-        section.classList.remove('ativo');
-      }
-    });
-  }
-  init(){
-    this.animaScroll();
-    window.addEventListener('scroll', this.animaScroll);
- main
   }
 }
