@@ -9,17 +9,17 @@ export default class Accordion {
     item.nextElementSibling.classList.toggle(this.activeClass);
   }
 
-  // adiciona os eventos ao accordion
+  // Adiciona os eventos ao accordion
   addAccordionEvent() {
     this.accordionList.forEach((item) => {
       item.addEventListener('click', () => this.toggleAccordion(item));
     });
   }
 
-  // iniciar função
+  // Iniciar função
   init() {
     if (this.accordionList.length) {
-      // ativar primeiro item
+      // Ativar primeiro item
       this.toggleAccordion(this.accordionList[0]);
       this.addAccordionEvent();
     }
